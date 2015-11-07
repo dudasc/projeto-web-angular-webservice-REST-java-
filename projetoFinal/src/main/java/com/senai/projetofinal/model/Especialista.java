@@ -17,13 +17,27 @@ public class Especialista extends Pessoa {
     private Date dtCadastro;
     private Categoria categoria;
     private Endereco endereco;
+    private Usuario usuario;
 
-    public Especialista(String celular, String telefone, Date dtCadastro, Integer id, String nome, String email) {
+    public Especialista(String celular, String telefone, Date dtCadastro, Categoria categoria, Endereco endereco, Usuario usuario, Integer id, String nome, String email) {
         super(id, nome, email);
         this.celular = celular;
         this.telefone = telefone;
         this.dtCadastro = dtCadastro;
+        this.categoria = categoria;
+        this.endereco = endereco;
+        this.usuario = usuario;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
 
     public Categoria getCategoria() {
         return categoria;

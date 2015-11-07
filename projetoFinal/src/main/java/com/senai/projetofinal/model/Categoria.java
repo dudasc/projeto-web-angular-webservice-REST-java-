@@ -13,11 +13,23 @@ public class Categoria {
     
     private Integer id;
     private String nome;
+    private Usuario usuario;
 
-    public Categoria(Integer id, String nome) {
+    public Categoria(Integer id, String nome, Usuario usuario) {
         this.id = id;
         this.nome = nome;
+        this.usuario = usuario;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
 
     public Integer getId() {
         return id;

@@ -10,6 +10,7 @@ package com.senai.projetofinal.model;
  * @author lisandro_bitencourt
  */
 public class Endereco {
+
     private Integer id;
     private String pais;
     private String estado;
@@ -19,8 +20,9 @@ public class Endereco {
     private String complemento;
     private Integer numero;
     private String cep;
+    private Usuario usuario;
 
-    public Endereco(Integer id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep) {
+    public Endereco(Integer id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
         this.id = id;
         this.pais = pais;
         this.estado = estado;
@@ -30,11 +32,17 @@ public class Endereco {
         this.complemento = complemento;
         this.numero = numero;
         this.cep = cep;
+        this.usuario = usuario;
     }
 
-    
-    
-    
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -106,6 +114,5 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
-    
+
 }

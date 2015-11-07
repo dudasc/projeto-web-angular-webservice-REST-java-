@@ -16,8 +16,10 @@ public class Cliente extends Pessoa {
    private Date dtNascimento;
    private Date dtCadastro;
    private Endereco endereco;
+   private Usuario usuario;
 
-    public Cliente(String sexo, String cpf, String celular, String telefone, Date dtNascimento, Date dtCadastro, Integer id, String nome, String email) {
+
+    public Cliente(String sexo, String cpf, String celular, String telefone, Date dtNascimento, Date dtCadastro, Endereco endereco, Usuario usuario, Integer id, String nome, String email) {
         super(id, nome, email);
         this.sexo = sexo;
         this.cpf = cpf;
@@ -25,7 +27,17 @@ public class Cliente extends Pessoa {
         this.telefone = telefone;
         this.dtNascimento = dtNascimento;
         this.dtCadastro = dtCadastro;
-    }   
+        this.endereco = endereco;
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
    
    
 
