@@ -5,7 +5,7 @@
  */
 package com.senai.projetofinal.model;
 
-import javax.persistence.MappedSuperclass;
+
 
 /**
  *
