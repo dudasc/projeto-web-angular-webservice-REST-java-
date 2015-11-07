@@ -8,9 +8,12 @@ package com.senai.projetofinal.model;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,6 +37,8 @@ public class Servico {
     private String nome;
     @Column(name = "valor")
     private Double valor;
+    @ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_categoria")
     private Categoria categoria;
     private Usuario usuario;
 

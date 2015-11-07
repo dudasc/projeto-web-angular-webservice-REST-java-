@@ -5,11 +5,14 @@
  */
 package com.senai.projetofinal.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -31,13 +34,31 @@ public class Categoria {
     private Long id;
     @Column(name = "nome", unique = true, nullable = true, length = 100)
     private String nome;
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="categoria", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
+    private Servico servico;
     private Usuario usuario;
 
-    public Categoria(Long id, String nome, Usuario usuario) {
+    public Categoria() {
+    }
+
+    
+    
+    public Categoria(Long id, String nome, Servico servico, Usuario usuario) {
         this.id = id;
         this.nome = nome;
+        this.servico = servico;
         this.usuario = usuario;
     }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    
 
     public Usuario getUsuario() {
         return usuario;

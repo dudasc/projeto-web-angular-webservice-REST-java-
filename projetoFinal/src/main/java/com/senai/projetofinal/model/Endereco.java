@@ -7,9 +7,13 @@ package com.senai.projetofinal.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -29,8 +33,8 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")    
-
     private Long id;
+    
     private String pais;
     private String estado;
     private String cidade;
@@ -39,7 +43,11 @@ public class Endereco {
     private String complemento;
     private Integer numero;
     private String cep;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+    @OneToOne(fetch = FetchType.EAGER)
+    private Cliente cliente;
 
     public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
 
