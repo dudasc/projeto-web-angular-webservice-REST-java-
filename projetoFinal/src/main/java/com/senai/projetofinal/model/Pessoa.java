@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 // anotação JPA p/ pegar os atributos de herança 
 @MappedSuperclass
 @XmlRootElement
+
 //com isso nao precisa criar o setId pq nunca será alterado
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Pessoa {
