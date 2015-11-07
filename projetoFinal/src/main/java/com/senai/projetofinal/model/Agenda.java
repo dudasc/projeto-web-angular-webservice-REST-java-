@@ -9,6 +9,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,7 +49,7 @@ public class Agenda {
     private Time horario;
     @Column(name = "status")
     private Integer status = 0;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="agenda", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
     @JoinColumn(name = "id_servico")    
     private List<Servico> listaServicos = new ArrayList<>();
     @Column(name = "valorTotal")

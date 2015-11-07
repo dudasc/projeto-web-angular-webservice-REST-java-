@@ -5,11 +5,17 @@
  */
 package com.senai.projetofinal.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -31,13 +37,35 @@ public class Categoria {
     private Long id;
     @Column(name = "nome", unique = true, nullable = true, length = 100)
     private String nome;
+    @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
+    
+   
+    
+    	@OneToMany(fetch=FetchType.EAGER, mappedBy="categoria", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
+    
+    private List<Servico> listServicos = new ArrayList<>();
+
+    public Categoria() {
+    }
 
     public Categoria(Long id, String nome, Usuario usuario) {
         this.id = id;
         this.nome = nome;
         this.usuario = usuario;
     }
+
+    public List<Servico> getListServicos() {
+        return listServicos;
+    }
+
+    public void setListServicos(List<Servico> listServicos) {
+        this.listServicos = listServicos;
+    }
+    
+    
+
+    
 
     public Usuario getUsuario() {
         return usuario;

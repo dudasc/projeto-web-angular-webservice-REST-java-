@@ -6,11 +6,17 @@
 package com.senai.projetofinal.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,16 +40,41 @@ public class Servico {
     private String nome;
     @Column(name = "valor")
     private Double valor;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+    
+    @ManyToMany(fetch=FetchType.EAGER, mappedBy="servico", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
+    private Agenda agenda;
 
-    public Servico(Long id, String nome, Double valor, Categoria categoria, Usuario usuario) {
+    public Servico() {
+    }
+
+    public Servico(Long id, String nome, Double valor, Categoria categoria, Usuario usuario, Agenda agenda) {
         this.id = id;
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
         this.usuario = usuario;
+        this.agenda = agenda;
     }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+    
+    
+
+    
 
     public Long getId() {
         return id;
