@@ -13,10 +13,17 @@ package com.senai.projetofinal.model;
  */
 // anotação JPA p/ pegar os atributos de herança @MappedSuperclass
 public abstract class Pessoa {
-    private Integer id;
-    private String nome;
-    private String email;
+  protected Integer id;
+    protected String nome;
+    protected String email;
 
+    public Pessoa(Integer id, String nome, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+    }
+    
+    
     public Integer getId() {
         return id;
     }
