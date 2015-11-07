@@ -5,13 +5,16 @@
  */
 package com.senai.projetofinal.model;
 
+import javax.persistence.MappedSuperclass;
+
 
 
 /**
  *
  * @author lisandro_bitencourt
  */
-// anotação JPA p/ pegar os atributos de herança @MappedSuperclass
+// anotação JPA p/ pegar os atributos de herança 
+@MappedSuperclass
 public abstract class Pessoa {
   protected Integer id;
     protected String nome;
