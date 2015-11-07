@@ -13,6 +13,14 @@ public class Usuario extends Pessoa {
     private String login;
     private String senha;
 
+    public Usuario(String login, String senha, Integer id, String nome, String email) {
+        super(id, nome, email);
+        this.login = login;
+        this.senha = senha;
+    }
+
+   
+
     public String getLogin() {
         return login;
     }
