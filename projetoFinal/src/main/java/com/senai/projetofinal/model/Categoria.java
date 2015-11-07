@@ -11,11 +11,11 @@ package com.senai.projetofinal.model;
  */
 public class Categoria {
     
-    private Integer id;
+    private Long id;
     private String nome;
     private Usuario usuario;
 
-    public Categoria(Integer id, String nome, Usuario usuario) {
+    public Categoria(Long id, String nome, Usuario usuario) {
         this.id = id;
         this.nome = nome;
         this.usuario = usuario;
@@ -31,11 +31,11 @@ public class Categoria {
 
     
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

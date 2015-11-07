@@ -11,7 +11,7 @@ package com.senai.projetofinal.model;
  */
 public class Endereco {
 
-    private Integer id;
+    private Long id;
     private String pais;
     private String estado;
     private String cidade;
@@ -22,7 +22,7 @@ public class Endereco {
     private String cep;
     private Usuario usuario;
 
-    public Endereco(Integer id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
+    public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
         this.id = id;
         this.pais = pais;
         this.estado = estado;
@@ -43,11 +43,11 @@ public class Endereco {
         this.usuario = usuario;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
