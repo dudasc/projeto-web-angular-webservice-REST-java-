@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -46,7 +47,7 @@ public class Cliente extends Pessoa {
     @OneToOne(fetch=FetchType.EAGER, mappedBy="cliente", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 

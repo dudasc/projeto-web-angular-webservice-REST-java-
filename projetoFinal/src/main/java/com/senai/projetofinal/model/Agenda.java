@@ -5,7 +5,8 @@
  */
 package com.senai.projetofinal.model;
 
-import java.sql.Time;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,7 +47,12 @@ public class Agenda {
     private Date dataCadastro;
     @Temporal(TemporalType.TIME)
     @Column(name = "horario", nullable = true)
-    private Time horario;
+
+ 
+    private Date horario; 
+    
+    
+    
     @Column(name = "status")
     private Integer status = 0;
     @OneToMany(fetch=FetchType.EAGER, mappedBy="agenda", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
@@ -61,7 +67,7 @@ public class Agenda {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    public Agenda(Long id, Date dataCadastro, Time horario, Double valorTotal, Usuario usuario, Cliente cliente) {
+    public Agenda(Long id, Date dataCadastro, Date horario, Double valorTotal, Usuario usuario, Cliente cliente) {
         this.id = id;
         this.dataCadastro = dataCadastro;
         this.horario = horario;
@@ -89,11 +95,11 @@ public class Agenda {
         this.dataCadastro = dataCadastro;
     }
 
-    public Time getHorario() {
+    public Date getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(Date horario) {
         this.horario = horario;
     }
 

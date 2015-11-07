@@ -45,11 +45,11 @@ public class Servico {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
     
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
     
-    @ManyToMany(fetch=FetchType.EAGER, mappedBy="servico", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
+    @ManyToOne(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
     private Agenda agenda;
 
     public Servico() {
