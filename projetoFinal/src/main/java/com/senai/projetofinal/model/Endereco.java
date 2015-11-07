@@ -5,6 +5,7 @@
  */
 package com.senai.projetofinal.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -53,7 +54,8 @@ public class Endereco {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    @OneToOne(fetch = FetchType.EAGER)
+    
+    @OneToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
