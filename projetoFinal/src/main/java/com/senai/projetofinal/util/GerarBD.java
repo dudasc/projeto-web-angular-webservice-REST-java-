@@ -18,9 +18,15 @@ public class GerarBD {
     /**
      * @param args the command line arguments
      */
+    
+    private static EntityManagerFactory entity = null;
     public static void main(String[] args) {
-       EntityManagerFactory factory = Persistence.createEntityManagerFactory("projetofinalPU");
-       EntityManager entityManager = factory.createEntityManager();
+       entity = Persistence.createEntityManagerFactory("projetofinalPU");	
+	
+		if(entity == null){
+			entity = (EntityManagerFactory) entity.createEntityManager();
+		}
+		
        
     }
     
