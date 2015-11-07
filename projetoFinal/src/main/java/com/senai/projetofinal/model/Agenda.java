@@ -11,11 +11,14 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,8 +40,6 @@ public class Agenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    private Cliente cliente;
-    private Usuario usuario;
     @Temporal(TemporalType.DATE)
     @Column(name = "dtCadastro", nullable = true)
     private Date dataCadastro;
@@ -47,19 +48,28 @@ public class Agenda {
     private Time horario;
     @Column(name = "status")
     private Integer status = 0;
-    @OneToMany
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_servico")    
     private List<Servico> listaServicos = new ArrayList<>();
     @Column(name = "valorTotal")
     private Double valorTotal;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_usuario")    
+    private Usuario usuario;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 
-    public Agenda(Long id, Cliente cliente, Usuario usuario, Date dataCadastro, Time horario, Integer status, Double valorTotal) {
+    public Agenda(Long id, Date dataCadastro, Time horario, Double valorTotal, Usuario usuario, Cliente cliente) {
         this.id = id;
-        this.cliente = cliente;
-        this.usuario = usuario;
         this.dataCadastro = dataCadastro;
         this.horario = horario;
-        this.status = status;
         this.valorTotal = valorTotal;
+        this.usuario = usuario;
+        this.cliente = cliente;
+    }
+
+    public Agenda() {
     }
 
     public Long getId() {
@@ -69,22 +79,6 @@ public class Agenda {
     /*public void setId(Long id) {
         this.id = id;
     }*/
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 
     public Date getDataCadastro() {
         return dataCadastro;
@@ -125,6 +119,23 @@ public class Agenda {
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     
     
     
