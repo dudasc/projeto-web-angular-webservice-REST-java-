@@ -37,6 +37,11 @@ public abstract class Pessoa {
     @Column(name = "email", unique = true, nullable = false)
     protected String email;
 
+    protected Pessoa() {
+    }
+
+    
+    
     public Pessoa(Integer id, String nome, String email) {
         this.id = id;
         this.nome = nome;

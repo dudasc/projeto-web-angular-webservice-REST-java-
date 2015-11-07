@@ -19,10 +19,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Usuario extends Pessoa {
 
-    @Column(name = "login", unique = true, nullable = false)
+    @Column(name = "login", unique = true, nullable = true)
     private String login;
-    @Column(name = "senha", unique = true, nullable = false)
+    @Column(name = "senha", nullable = true)
     private String senha;
+
+    //JPA precisa de um contrutor vazio em cada class model para gerar as tabelas
+
+    public Usuario() {
+        
+    }
+    
+    
+    
 
     public Usuario(String login, String senha, Integer id, String nome, String email) {
         super(id, nome, email);

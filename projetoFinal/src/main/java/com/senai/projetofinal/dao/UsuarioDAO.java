@@ -6,11 +6,11 @@
 package com.senai.projetofinal.dao;
 
 import com.senai.projetofinal.model.Usuario;
-import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+
 
 /**
  *

@@ -21,11 +21,11 @@ public class GerarBD {
     
     private static EntityManagerFactory entity = null;
     public static void main(String[] args) {
-       entity = Persistence.createEntityManagerFactory("projetofinalPU");	
-	
-		if(entity == null){
-			entity = (EntityManagerFactory) entity.createEntityManager();
-		}
+      // entity = Persistence.createEntityManagerFactory("projetofinalPU");	
+	//
+	//	if(entity == null){
+	//		entity = (EntityManagerFactory) entity.createEntityManager();
+	//	}
 		
        
     }
