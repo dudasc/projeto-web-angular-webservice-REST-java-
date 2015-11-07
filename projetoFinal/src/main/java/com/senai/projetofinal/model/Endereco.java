@@ -7,9 +7,13 @@ package com.senai.projetofinal.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -29,16 +33,25 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")    
-
     private Long id;
+    @Column(name = "pais", unique = true, nullable = true, length = 30)
     private String pais;
+    @Column(name = "estado", nullable = true, length = 30)
     private String estado;
+    @Column(name = "cidade", nullable = true, length = 30)
     private String cidade;
+    @Column(name = "bairro", nullable = true, length = 30)
     private String bairro;
+    @Column(name = "rua", nullable = true, length = 30)
     private String rua;
+    @Column(name = "complemento", nullable = true, length = 30)
     private String complemento;
+    @Column(name = "numero")
     private Integer numero;
+    @Column(name = "cep", nullable = true, length = 9)
     private String cep;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
