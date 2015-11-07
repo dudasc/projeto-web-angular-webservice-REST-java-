@@ -9,19 +9,47 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author duda
  */
+@Entity
+@Table(name = "agendamentos")
+@XmlRootElement
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Agenda {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private Cliente cliente;
     private Usuario usuario;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dtCadastro", nullable = true)
     private Date dataCadastro;
+    @Temporal(TemporalType.TIME)
+    @Column(name = "horario", nullable = true)
     private Time horario;
-    private Integer status;
+    @Column(name = "status")
+    private Integer status = 0;
+    @OneToMany
     private List<Servico> listaServicos = new ArrayList<>();
+    @Column(name = "valorTotal")
     private Double valorTotal;
 
     public Agenda(Long id, Cliente cliente, Usuario usuario, Date dataCadastro, Time horario, Integer status, Double valorTotal) {
@@ -38,9 +66,9 @@ public class Agenda {
         return id;
     }
 
-    public void setId(Long id) {
+    /*public void setId(Long id) {
         this.id = id;
-    }
+    }*/
 
     public Cliente getCliente() {
         return cliente;

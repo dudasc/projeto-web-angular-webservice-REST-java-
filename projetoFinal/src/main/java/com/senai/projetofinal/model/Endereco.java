@@ -5,11 +5,30 @@
  */
 package com.senai.projetofinal.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author lisandro_bitencourt
  */
+@Entity
+@Table(name = "enderecos")
+@XmlRootElement
+
+@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")    
 
     private Long id;
     private String pais;
@@ -23,6 +42,7 @@ public class Endereco {
     private Usuario usuario;
 
     public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
+
         this.id = id;
         this.pais = pais;
         this.estado = estado;
@@ -47,9 +67,9 @@ public class Endereco {
         return id;
     }
 
-    public void setId(Long id) {
+    /*public void setId(Long id) {
         this.id = id;
-    }
+    }*/
 
     public String getPais() {
         return pais;
