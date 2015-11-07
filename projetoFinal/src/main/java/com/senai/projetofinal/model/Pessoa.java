@@ -5,9 +5,14 @@
  */
 package com.senai.projetofinal.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
-
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -15,9 +20,20 @@ import javax.persistence.MappedSuperclass;
  */
 // anotação JPA p/ pegar os atributos de herança 
 @MappedSuperclass
+@XmlRootElement
+//com isso nao precisa criar o setId pq nunca será alterado
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Pessoa {
-  protected Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    protected Integer id;
+    
+    @Column(name = "nome", nullable = false)
     protected String nome;
+    
+    @Column(name = "email", unique = true, nullable = false)
     protected String email;
 
     public Pessoa(Integer id, String nome, String email) {
@@ -25,8 +41,7 @@ public abstract class Pessoa {
         this.nome = nome;
         this.email = email;
     }
-    
-    
+
     public Integer getId() {
         return id;
     }
@@ -50,7 +65,5 @@ public abstract class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
+
 }

@@ -5,12 +5,23 @@
  */
 package com.senai.projetofinal.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author lisandro_bitencourt
  */
+@Entity
+@Table(name = "usuarios")
+@XmlRootElement
 public class Usuario extends Pessoa {
+
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
+    @Column(name = "senha", unique = true, nullable = false)
     private String senha;
 
     public Usuario(String login, String senha, Integer id, String nome, String email) {
@@ -18,8 +29,6 @@ public class Usuario extends Pessoa {
         this.login = login;
         this.senha = senha;
     }
-
-   
 
     public String getLogin() {
         return login;
@@ -36,6 +45,5 @@ public class Usuario extends Pessoa {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+
 }
