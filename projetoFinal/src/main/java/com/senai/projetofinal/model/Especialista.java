@@ -18,12 +18,15 @@ public class Especialista extends Pessoa {
     private Categoria categoria;
     private Endereco endereco;
 
-    public Especialista(String celular, String telefone, Date dtCadastro, Integer id, String nome, String email) {
+    public Especialista(String celular, String telefone, Date dtCadastro, Categoria categoria, Endereco endereco, Integer id, String nome, String email) {
         super(id, nome, email);
         this.celular = celular;
         this.telefone = telefone;
         this.dtCadastro = dtCadastro;
+        this.categoria = categoria;
+        this.endereco = endereco;
     }
+
 
     public Categoria getCategoria() {
         return categoria;
