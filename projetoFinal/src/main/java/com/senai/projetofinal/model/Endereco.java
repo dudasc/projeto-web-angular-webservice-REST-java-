@@ -53,9 +53,11 @@ public class Endereco {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 
     public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
-
         this.id = id;
         this.pais = pais;
         this.estado = estado;
@@ -68,21 +70,16 @@ public class Endereco {
         this.usuario = usuario;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public Endereco() {
     }
 
     public Long getId() {
         return id;
     }
 
-    /*public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-    }*/
+    }
 
     public String getPais() {
         return pais;
@@ -147,5 +144,15 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+   
 
 }
