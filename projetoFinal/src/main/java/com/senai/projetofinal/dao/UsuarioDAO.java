@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -22,6 +23,21 @@ public class UsuarioDAO {
 
     @PersistenceContext(unitName = "projetofinalPU")
     private EntityManager em;
+    
+    
+    
+    public Usuario login(String username, String password) throws LoginInvalidoException {
+        try {
+            String jpql = "SELECT u FROM Usuario u "
+                    + "WHERE u.nome = :nome AND u.senha = :senha";
+            TypedQuery<Usuario> q = em.createQuery(jpql, Usuario.class);
+            q.setParameter("nome", username);
+            q.setParameter("senha", password);
+            return q.getSingleResult();
+        } catch (NoResultException ex) {
+            throw new LoginInvalidoException();
+        }
+    }
 
     public void inserir(Usuario usuario) {
         em.persist(usuario);
@@ -40,7 +56,7 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> listar() {
-        TypedQuery<Usuario> q = em.createQuery("SELECT u FROM Usuario u ORDER BY nome ", Usuario.class);
+        TypedQuery<Usuario> q = em.createQuery("SELECT u FROM Usuario u ", Usuario.class);
         return q.getResultList();
     }
 

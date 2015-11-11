@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author eduardo
  */
-//@WebFilter("/*")
-/*
+
+@WebFilter("/*")
 public class LoginFilter implements javax.servlet.Filter {
 
     @Override
@@ -44,7 +44,7 @@ public class LoginFilter implements javax.servlet.Filter {
             if (req.getSession().getAttribute("usuario") != null) {
                 chain.doFilter(request, response);
             } else {
-                res.sendRedirect("/#/login");
+                res.sendRedirect("login.html");
             }
         } else {
             chain.doFilter(request, response);
@@ -55,4 +55,4 @@ public class LoginFilter implements javax.servlet.Filter {
     public void destroy() {
     }
 
-}*/
+}
