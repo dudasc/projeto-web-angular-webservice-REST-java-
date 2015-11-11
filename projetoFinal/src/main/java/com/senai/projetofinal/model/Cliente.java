@@ -26,25 +26,25 @@ public class Cliente extends Pessoa {
 
     @Column(name = "sexo", nullable = true, length = 1)
     private String sexo;
-    
+
     @Column(name = "cpf", unique = true, nullable = true, length = 11)
     private String cpf;
-    
+
     @Column(name = "celular", unique = true, nullable = true, length = 11)
     private String celular;
-    
+
     @Column(name = "telefone", unique = true, nullable = true, length = 11)
     private String telefone;
-    
+
     @Temporal(TemporalType.DATE)
     @Column(name = "dtNascimento", nullable = true)
     private Date dtNascimento;
-    
+
     @Temporal(TemporalType.DATE)
     @Column(name = "dtCadastro", nullable = true)
     private Date dtCadastro;
-    
-    @OneToOne(fetch=FetchType.EAGER, mappedBy="cliente", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
+
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
     @ManyToOne(fetch = FetchType.EAGER)

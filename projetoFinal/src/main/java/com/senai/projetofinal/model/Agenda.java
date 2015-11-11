@@ -5,8 +5,6 @@
  */
 package com.senai.projetofinal.model;
 
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Agenda {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -48,22 +47,19 @@ public class Agenda {
     @Temporal(TemporalType.TIME)
     @Column(name = "horario", nullable = true)
 
- 
-    private Date horario; 
-    
-    
-    
+    private Date horario;
+
     @Column(name = "status")
     private Integer status = 0;
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="agenda", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
-    @JoinColumn(name = "id_servico")    
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "agenda", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "id_servico")
     private List<Servico> listaServicos = new ArrayList<>();
     @Column(name = "valorTotal")
     private Double valorTotal;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_usuario")    
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    @OneToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
@@ -84,9 +80,8 @@ public class Agenda {
     }
 
     /*public void setId(Long id) {
-        this.id = id;
-    }*/
-
+     this.id = id;
+     }*/
     public Date getDataCadastro() {
         return dataCadastro;
     }
@@ -142,8 +137,5 @@ public class Agenda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
-    
-    
-    
+
 }

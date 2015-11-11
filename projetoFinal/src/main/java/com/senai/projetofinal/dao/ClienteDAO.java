@@ -17,10 +17,11 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ClienteDAO {
-@PersistenceContext(unitName = "projetofinalPU")
+
+    @PersistenceContext(unitName = "projetofinalPU")
     private EntityManager em;
 
     public void insere(Cliente cliente) {
         em.persist(cliente);
-    }    
+    }
 }

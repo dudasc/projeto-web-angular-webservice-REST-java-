@@ -31,9 +31,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class Endereco {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")    
+    @Column(name = "id")
     private Long id;
     @Column(name = "pais", unique = true, nullable = true, length = 30)
     private String pais;
@@ -54,8 +55,8 @@ public class Endereco {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    
-    @OneToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
@@ -154,7 +155,5 @@ public class Endereco {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-   
 
 }

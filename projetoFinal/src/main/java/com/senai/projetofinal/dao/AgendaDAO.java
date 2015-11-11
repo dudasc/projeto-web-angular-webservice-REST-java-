@@ -17,10 +17,11 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class AgendaDAO {
-@PersistenceContext(unitName = "projetofinalPU")
+
+    @PersistenceContext(unitName = "projetofinalPU")
     private EntityManager em;
 
     public void insere(Agenda agenda) {
         em.persist(agenda);
-    }    
+    }
 }

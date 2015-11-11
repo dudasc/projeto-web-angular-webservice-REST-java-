@@ -30,18 +30,16 @@ public abstract class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     protected Integer id;
-    
+
     @Column(name = "nome", nullable = false)
     protected String nome;
-    
+
     @Column(name = "email", unique = true, nullable = false)
     protected String email;
 
     protected Pessoa() {
     }
 
-    
-    
     public Pessoa(Integer id, String nome, String email) {
         this.id = id;
         this.nome = nome;

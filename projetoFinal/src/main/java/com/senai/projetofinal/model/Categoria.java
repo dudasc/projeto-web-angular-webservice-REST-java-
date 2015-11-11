@@ -32,20 +32,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")    
+    @Column(name = "id")
     private Long id;
     @Column(name = "nome", unique = true, nullable = true, length = 100)
     private String nome;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    
-   
-    
-    	@OneToMany(fetch=FetchType.EAGER, mappedBy="categoria", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
-    
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+
     private List<Servico> listServicos = new ArrayList<>();
 
     public Categoria() {
@@ -64,10 +63,6 @@ public class Categoria {
     public void setListServicos(List<Servico> listServicos) {
         this.listServicos = listServicos;
     }
-    
-    
-
-    
 
     public Usuario getUsuario() {
         return usuario;
@@ -77,16 +72,13 @@ public class Categoria {
         this.usuario = usuario;
     }
 
-    
-
     public Long getId() {
         return id;
     }
 
     /*public void setId(Long id) {
-        this.id = id;
-    }*/
-
+     this.id = id;
+     }*/
     public String getNome() {
         return nome;
     }
@@ -94,6 +86,5 @@ public class Categoria {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    
+
 }

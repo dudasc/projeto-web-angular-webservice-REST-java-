@@ -32,24 +32,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Servico {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")    
+    @Column(name = "id")
     private Long id;
     @Column(name = "nome", unique = true, nullable = true, length = 100)
     private String nome;
     @Column(name = "valor")
     private Double valor;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    
-    @ManyToOne(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Agenda agenda;
 
     public Servico() {
@@ -71,19 +72,14 @@ public class Servico {
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
     }
-    
-    
-
-    
 
     public Long getId() {
         return id;
     }
 
     /*public void setId(Long id) {
-        this.id = id;
-    }*/
-
+     this.id = id;
+     }*/
     public String getNome() {
         return nome;
     }
@@ -115,8 +111,5 @@ public class Servico {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
 
-    
 }

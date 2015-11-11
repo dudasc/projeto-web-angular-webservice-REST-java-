@@ -25,13 +25,9 @@ public class Usuario extends Pessoa {
     private String senha;
 
     //JPA precisa de um contrutor vazio em cada class model para gerar as tabelas
-
     public Usuario() {
-        
+
     }
-    
-    
-    
 
     public Usuario(String login, String senha, Integer id, String nome, String email) {
         super(id, nome, email);
