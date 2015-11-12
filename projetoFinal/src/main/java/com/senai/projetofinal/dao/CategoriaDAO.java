@@ -7,9 +7,11 @@ package com.senai.projetofinal.dao;
 
 import com.senai.projetofinal.model.Categoria;
 import com.senai.projetofinal.model.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -21,7 +23,26 @@ public class CategoriaDAO {
     @PersistenceContext(unitName = "projetofinalPU")
     private EntityManager em;
 
-    public void insere(Categoria categoria) {
+    public void inserir(Categoria categoria) {
         em.persist(categoria);
+
     }
+
+    public void excluir(Long id) {
+        em.remove(em.getReference(Categoria.class, id));
+    }
+
+    public Categoria buscar(Long id) {
+        return em.find(Categoria.class, id);
+    }
+
+    public void atualizar(Categoria categoria) {
+        em.merge(categoria);
+    }
+
+    public List<Categoria> listar() {
+        TypedQuery<Categoria> q = em.createQuery("SELECT ct FROM Categoria ct ORDER BY nome ", Categoria.class);
+        return q.getResultList();
+    }
+
 }
