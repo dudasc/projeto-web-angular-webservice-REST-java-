@@ -29,7 +29,7 @@ public class UsuarioDAO {
     public Usuario login(String username, String password) throws LoginInvalidoException {
         try {
             String jpql = "SELECT u FROM Usuario u "
-                    + "WHERE u.nome = :nome AND u.senha = :senha";
+                    + "WHERE u.login = :nome AND u.senha = :senha";
             TypedQuery<Usuario> q = em.createQuery(jpql, Usuario.class);
             q.setParameter("nome", username);
             q.setParameter("senha", password);

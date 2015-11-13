@@ -5,6 +5,7 @@
  */
 package com.senai.projetofinal.rest;
 
+import com.senai.projetofinal.dao.LoginInvalidoException;
 import com.senai.projetofinal.dao.UsuarioDAO;
 import com.senai.projetofinal.model.Usuario;
 import java.util.List;
@@ -37,6 +38,22 @@ public class UsuarioResource {
     @GET
     public List<Usuario> list() {
         return dao.listar();
+    }
+    
+    @POST
+    @Path(value= "/autenticar")
+    @Consumes(value = "application/json")
+    public Usuario autenticar(Usuario usuario) throws LoginInvalidoException {
+        usuario = dao.login(usuario.getLogin(), usuario.getSenha());
+        boolean usuarioValido = usuario != null;
+
+        if (usuarioValido) {
+            
+          return usuario;  
+          
+        } 
+        return null;
+          
     }
     
 }

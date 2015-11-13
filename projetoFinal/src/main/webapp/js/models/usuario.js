@@ -2,12 +2,12 @@
 //liga o back end com o front-end passando a url do rest
 
 
-app.module('usuario')
-        .factory('Usuario',
-                function (railsResourceFactory, API_URL) {
-                    var Contato = railsResourceFactory({
-                        url: API_URL + 'usuario'
-                    });
+app.factory('Usuario',
+        function (railsResourceFactory, API_URL) {           
 
-                    return Usuario;
-                });
+            var Usuario = railsResourceFactory({
+                url: API_URL + 'usuarios'
+            });
+            
+            return Usuario;
+        });

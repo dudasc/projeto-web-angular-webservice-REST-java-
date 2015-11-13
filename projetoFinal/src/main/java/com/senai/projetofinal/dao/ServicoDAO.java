@@ -26,8 +26,8 @@ public class ServicoDAO {
 
     public void inserir(Servico servico) {
         em.persist(servico);
-    }    
-    
+    }
+
     public void excluir(Long id) {
         em.remove(em.getReference(Servico.class, id));
     }
@@ -44,6 +44,5 @@ public class ServicoDAO {
         TypedQuery<Servico> q = em.createQuery("SELECT s FROM Servico s ORDER BY nome ", Servico.class);
         return q.getResultList();
     }
-    
-    }
+
 }

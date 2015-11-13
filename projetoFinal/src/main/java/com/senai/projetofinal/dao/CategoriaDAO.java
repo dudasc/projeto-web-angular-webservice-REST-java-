@@ -25,7 +25,6 @@ public class CategoriaDAO {
 
     public void inserir(Categoria categoria) {
         em.persist(categoria);
-
     }
 
     public void excluir(Long id) {
