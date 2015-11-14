@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
         final String password = req.getParameter("senha");
 
         try {
-            System.out.println("saaaaaaaaaaaaaaaaaaa");
+            
             Usuario usuario = usuarioDAO.login(username, password);
 
             req.getSession().setAttribute("usuario", usuario);
@@ -43,10 +43,10 @@ public class LoginController extends HttpServlet {
             //cookieUsuario.setMaxAge(60 * 60 * 24 * 30);
             //resp.addCookie(cookieUsuario);
 
-            resp.sendRedirect("index.html");
+            resp.sendRedirect("./");
         } catch (LoginInvalidoException ex) {
             req.setAttribute("mensagem", ex.getMessage());
-            req.getRequestDispatcher("/login.html").forward(req, resp);
+            req.getRequestDispatcher("login.html").forward(req, resp);
         }
 
     }

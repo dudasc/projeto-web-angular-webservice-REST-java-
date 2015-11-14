@@ -1,3 +1,4 @@
+'use restrict'
 function UsuarioController($scope, Usuario, $rootScope) {
     
     $scope.limpar = function () {

@@ -1,6 +1,5 @@
 package com.senai.projetofinal.filter;
 
-
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,12 +15,10 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author eduardo
  */
-
 @WebFilter("/*")
 public class LoginFilter implements javax.servlet.Filter {
 
@@ -31,16 +28,18 @@ public class LoginFilter implements javax.servlet.Filter {
 
     @Override
     public void doFilter(ServletRequest request,
-            ServletResponse response,
-            FilterChain chain)
-            throws IOException, ServletException {
+               ServletResponse response,
+               FilterChain chain)
+               throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-        if (!req.getRequestURI().endsWith("/login.html")
-                && !req.getRequestURI().endsWith("/login")
-                && !req.getRequestURI().endsWith("/logout")) {
+        if (!req.getRequestURI().startsWith(req.getContextPath() + "/webjars")
+                   && !req.getRequestURI().startsWith(req.getContextPath() + "/js")
+                   && !req.getRequestURI().endsWith("/login.html")
+                   && !req.getRequestURI().endsWith("/login")
+                   && !req.getRequestURI().endsWith("/logout")) {
             if (req.getSession().getAttribute("usuario") != null) {
                 chain.doFilter(request, response);
             } else {
