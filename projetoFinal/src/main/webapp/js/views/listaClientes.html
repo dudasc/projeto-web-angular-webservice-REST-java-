@@ -1,0 +1,57 @@
+<div class="page-header">
+    <h1>Clientes</h1>
+</div>
+
+
+<div class="col-md-3">
+    <div class="panel panel-default">
+
+
+        <div class="panel-heading">Menu de opções</div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                 <li ng-class="{active: activetab == '/cadastroCliente'}"><a href="#/cadastroCliente">Cadastrar novo cliente</a></li>
+                <li ng-class="{active: activetab == '/listaClientes'}"><a href="#/listaClientes">Pesquisar clientes</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-md-9" ng-controller="ClienteController" >
+    <h2>Clientes cadastrados</h2>
+    <div class="alert alert-success" role="alert" ng-show="mensagemOk" >{{mensagemOk}}</div>
+    <div class="alert alert-danger" role="alert" ng-show="mensagemErro" >{{mensagemErro}}</div>
+
+    <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?"/><br>
+    <table class="table table-bordered table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-mail</th>                
+                <th>Nascimento</th>
+                <th>Endereco</th>
+                <th>Ativo</th>
+                <th>Ativar/Desativar</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="contato in lista| filter:criterioDeBusca">
+                <td>{{cliente.id}}</td>
+                <td>{{contato.nome}}</td>
+                <td>{{contato.email}}</td>
+                <td>{{contato.dataNascimento}}</td>
+                <td>{{contato.endereco}}</td>
+                <td>{{contato.ativo}}</td>
+                <td><button class="btn btn-success btn-xs" ng-click="ativar(contato)">Ativar/desativar</button></td>
+                <td><button class="btn btn-info btn-xs" ng-click="editar(contato)">Editar</button></td>
+                <td><button class="btn btn-danger btn-xs" ng-click="deletar(contato)">Excluir</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

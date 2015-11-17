@@ -47,6 +47,7 @@ public class Cliente extends Pessoa {
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;

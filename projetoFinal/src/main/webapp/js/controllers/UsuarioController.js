@@ -27,6 +27,7 @@ function UsuarioController($scope, Usuario, $rootScope) {
                     $scope.limpar();
                 }, function (error) {
                     $scope.msgErro = "Erro ao efetuar cadastro";
+                    alert($scope.usuario.nome);
                     console.log('error', error);
                 });
         // }

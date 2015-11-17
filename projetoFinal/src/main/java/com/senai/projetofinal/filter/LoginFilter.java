@@ -37,6 +37,7 @@ public class LoginFilter implements javax.servlet.Filter {
 
         if (!req.getRequestURI().startsWith(req.getContextPath() + "/webjars")
                    && !req.getRequestURI().startsWith(req.getContextPath() + "/js")
+                    && !req.getRequestURI().startsWith(req.getContextPath() + "/css")
                    && !req.getRequestURI().endsWith("/login.html")
                    && !req.getRequestURI().endsWith("/login")
                    && !req.getRequestURI().endsWith("/logout")) {

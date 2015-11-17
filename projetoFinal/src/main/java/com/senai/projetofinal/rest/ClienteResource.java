@@ -5,7 +5,11 @@
  */
 package com.senai.projetofinal.rest;
 
+import com.senai.projetofinal.dao.ClienteDAO;
+import com.senai.projetofinal.dao.EnderecoDAO;
 import com.senai.projetofinal.dao.UsuarioDAO;
+import com.senai.projetofinal.model.Cliente;
+import com.senai.projetofinal.model.Endereco;
 import com.senai.projetofinal.model.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,21 +26,24 @@ import javax.ws.rs.core.MediaType;
  * @author eduardo
  */
 @Stateless
-@Path("usuarios")
+@Path("clientes")
 @Produces(MediaType.APPLICATION_JSON)
-public class UsuarioResource {
+public class ClienteResource {
     
     @Inject
-    private UsuarioDAO dao;
+    private ClienteDAO clienteDAO;
+    
+     @Inject
+    private EnderecoDAO enderecoDAO;
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insert(Usuario u) {
-        dao.inserir(u);        
+    public void insert(Cliente c){   
+        clienteDAO.inserir(c);
     }
     @GET
-    public List<Usuario> list() {
-        return dao.listar();
+    public List<Cliente> list() {
+        return clienteDAO.listar();
     }
     
     /*@POST

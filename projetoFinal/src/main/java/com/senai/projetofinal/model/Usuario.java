@@ -36,12 +36,7 @@ public class Usuario extends Pessoa {
 
     }
 
-    public Usuario(String login, String senha, Date dtCadastro) {
-        this.login = login;
-        this.senha = senha;
-        this.dtCadastro = dtCadastro;
-    }
-
+    
     public Usuario(String login, String senha, Date dtCadastro, Integer id, String nome, String email) {
         super(id, nome, email);
         this.login = login;

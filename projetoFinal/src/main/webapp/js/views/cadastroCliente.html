@@ -1,0 +1,59 @@
+<div class="page-header">
+    <h1>Clientes</h1>
+</div>
+
+
+<div class="row">
+<div class="col-md-3">
+    <div class="panel panel-default">
+
+
+        <div class="panel-heading">Menu de opções</div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-class="{active: activetab == '/cadastroCliente'}"><a href="#/cadastroCliente">Cadastrar novo cliente</a></li>
+                <li ng-class="{active: activetab == '/listaClientes'}"><a href="#/listaClientes">Pesquisar clientes</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-md-9">
+
+    <h2 ng-bind="titulo"> conssssssssssstato</h2>
+
+    <form name="contatoForm">
+        
+        <div class="form-group">
+            <div class="col-md-2">
+                <label for="codigo_id">Códgigo</label>
+                <input type="text"  class="form-control" name="codigo" ng-model="contato.id" disabled    ng-required="true" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nome</label>
+            <input type="text"  class="form-control" name="nome" ng-required="true" ng-model="contato.nome"    ng-required="true" />
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Email</label>
+            <input type="text"  class="form-control" name="email" ng-model="contato.email" />
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Endereço</label>
+            <input type="text"  class="form-control" name="endereco" ng-model="contato.endereco" />
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Data de nascimento</label>
+            <input type="date"  class="form-control" name="dataNascimento" ng-model="contato.dataNascimento" />
+
+        </div>
+
+        <button class="btn btn-primary" ng-disabled="contatoForm.$invalid" ng-click="gravar()">Gravar</button>
+        <button type="reset" class="btn">Limpar</button>
+    </form>
+</div>
+</div>
