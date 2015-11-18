@@ -44,18 +44,18 @@ public class Cliente extends Pessoa {
     @Column(name = "dtCadastro", nullable = true)
     private Date dtCadastro;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    /*@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;*/
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
 
     public Cliente() {
     }
 
-    public Cliente(String sexo, String cpf, String celular, String telefone, Date dtNascimento, Date dtCadastro, Endereco endereco, Usuario usuario, Integer id, String nome, String email) {
+    public Cliente(String sexo, String cpf, String celular, String telefone, Date dtNascimento, Date dtCadastro, Endereco endereco, Integer id, String nome, String email) {
         super(id, nome, email);
         this.sexo = sexo;
         this.cpf = cpf;
@@ -63,17 +63,11 @@ public class Cliente extends Pessoa {
         this.telefone = telefone;
         this.dtNascimento = dtNascimento;
         this.dtCadastro = dtCadastro;
+      
         this.endereco = endereco;
-        this.usuario = usuario;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+   
 
     public String getSexo() {
         return sexo;

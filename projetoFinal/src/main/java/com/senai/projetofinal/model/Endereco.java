@@ -52,15 +52,16 @@ public class Endereco {
     private Integer numero;
     @Column(name = "cep", nullable = true, length = 9)
     private String cep;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    //@ManyToOne(fetch = FetchType.EAGER)
+    
+    /*@JoinColumn(name = "id_usuario")
+    private Usuario usuario;*/
 
-      @OneToOne(fetch = FetchType.EAGER)
-   // @JoinColumn(name = "id_cliente")
-    private Cliente cliente;
+   /* @OneToOne(fetch = FetchType.EAGER,  cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;*/
 
-    public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
+    public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep) {
         this.id = id;
         this.pais = pais;
         this.estado = estado;
@@ -70,7 +71,7 @@ public class Endereco {
         this.complemento = complemento;
         this.numero = numero;
         this.cep = cep;
-        this.usuario = usuario;
+       // this.usuario = usuario;
     }
 
     public Endereco() {
@@ -146,14 +147,6 @@ public class Endereco {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
 }
