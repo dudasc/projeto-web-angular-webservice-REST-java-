@@ -39,7 +39,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> listar() {
-        TypedQuery<Cliente> q = em.createQuery("SELECT c FROM Cliente c ", Cliente.class);
+        TypedQuery<Cliente> q = em.createQuery("SELECT c FROM Cliente c", Cliente.class);
         return q.getResultList();
     }
 }

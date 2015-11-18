@@ -3,7 +3,7 @@
 </div>
 
 
-<div class="row">
+
 <div class="col-md-3">
     <div class="panel panel-default">
 
@@ -19,41 +19,95 @@
     </div>
 </div>
 
-<div class="col-md-9">
+<div class="col-md-9" ng-controller="ClienteController">
 
-    <h2 ng-bind="titulo"> conssssssssssstato</h2>
-
+    <h2>Cadastrar cliente</h2>
+<div class="alert alert-success" role="alert" ng-show="msgOk" >{{msgOk}}</div>
+    <div class="alert alert-danger" role="alert" ng-show="msgErro" >{{msgErro}}</div>
     <form name="contatoForm">
-        
+        <input type="hidden" ng-model="cliente.dtCadastro" value="2015-12-12">
+        <div class="form-group-sm">
+            <label for="codigo_id">Códgigo</label>
+            <input type="text"  class="form-control" name="codigo"  disabled  />
+        </div>
+
         <div class="form-group">
-            <div class="col-md-2">
-                <label for="codigo_id">Códgigo</label>
-                <input type="text"  class="form-control" name="codigo" ng-model="contato.id" disabled    ng-required="true" />
+            <label for="nome_id">Nome</label>
+            <input type="text" id="nome_id"  class="form-control" name="nome" ng-required="true" ng-model="cliente.nome"    ng-required="true" />
+        </div>
+        <div class="form-group">
+            <label for="cpf_id">CPF</label>
+            <input type="text" id="cpf_id" class="form-control" name="cpf" ng-model="cliente.cpf" />
+
+        </div>
+        <div class="form-group">
+            <label for="cpf_id">E-mail</label>
+            <input type="text" id="cpf_id" class="form-control" name="cpf" ng-model="cliente.email" />
+
+        </div>
+        <div class="form-group">
+            <label for="sexom_id">Sexo</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="sexo" id="sexom_id" value="M" ng-model="cliente.sexo" checked>
+                    Masculino
+                </label>
             </div>
-        </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="sexo" id="sexof_id" value="F" ng-model="cliente.sexo">
+                    Feminino
+                </label>
 
-        <div class="form-group">
-            <label for="exampleInputPassword1">Nome</label>
-            <input type="text"  class="form-control" name="nome" ng-required="true" ng-model="contato.nome"    ng-required="true" />
-        </div>
-        <div class="form-group">
-            <label for="exampleInputFile">Email</label>
-            <input type="text"  class="form-control" name="email" ng-model="contato.email" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">Data de nascimento</label>
+                <input type="date" class="form-control" name="dataNascimento" ng-model="cliente.dataNascimento" />
 
-        </div>
-        <div class="form-group">
-            <label for="exampleInputFile">Endereço</label>
-            <input type="text"  class="form-control" name="endereco" ng-model="contato.endereco" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">País</label>
+                <select class="form-control" name="pais" ng-model="cliente.endereco.pais" >
+                    <option>Selecione</option>
+                    <option value="Brasil">Brasil</option>                 
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="estado_id">Estado</label>
+                <select class="form-control" name="estado" ng-model="cliente.endereco.estado" >
+                    <option>Selecione</option>
+                    <option value="sc">Santa Catarina</option>
+                    <option value="rs">Rio Grande do Sul</option>
+                    <option value="pr">Paraná</option>               
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input type="text"  class="form-control" name="cidade" ng-model="cliente.endereco.cidade" />
+            </div>
+            
+            <div class="form-group">
+                <label for="bairro_id">Bairro</label>
+                <input type="text"  class="form-control" name="bairro" ng-model="cliente.endereco.bairro" />
+            </div>
 
-        </div>
-        <div class="form-group">
-            <label for="exampleInputFile">Data de nascimento</label>
-            <input type="date"  class="form-control" name="dataNascimento" ng-model="contato.dataNascimento" />
-
-        </div>
-
-        <button class="btn btn-primary" ng-disabled="contatoForm.$invalid" ng-click="gravar()">Gravar</button>
-        <button type="reset" class="btn">Limpar</button>
+            <div class="form-group">
+                <label for="rua_id">Rua</label>
+                <input type="text"  class="form-control" name="cidade" ng-model="cliente.endereco.rua" />
+            </div>
+            <div class="form-group">
+                <label for="num_id">Número</label>
+                <input type="text"  class="form-control" name="cidade" ng-model="cliente.endereco.numero" />
+            </div>
+            <div class="form-group">
+                <label for="num_id">Complemento</label>
+                <input type="text"  class="form-control" name="cidade" ng-model="cliente.endereco.complemento" />
+            </div>
+            <div class="form-group">
+                <label for="cep_id">Cep</label>
+                <input type="text"  class="form-control" name="cep" ng-model="cliente.endereco.cep" />
+            </div>
+            <button class="btn btn-primary" ng-click="gravar()">Gravar</button>
+            <button type="reset" class="btn">Limpar</button>
     </form>
-</div>
 </div>

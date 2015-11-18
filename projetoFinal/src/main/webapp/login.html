@@ -13,7 +13,7 @@ and open the template in the editor.
 
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
-    <body ng-controller="UsuarioController">
+    <body >
         <div class="container">
             <br>
             <div class="row">
@@ -45,12 +45,12 @@ and open the template in the editor.
 
 
 
-                <div class="col-md-7">
+                <div class="col-md-7" ng-controller="UsuarioController">
                     <div class="panel panel-primary">
 
                         <div class="panel-heading">Realizar cadastro</div>
                         <div class="panel-body">
-                            <form name="usuarioForm">
+                            <form name="usuarioForm" method="post" >
                                 <div class="form-group">
                                     <label for="nome_id">Nome completo</label>
                                     <input type="text" class="form-control" id="nome_id" placeholder="Nome completo" ng-model="usuario.nome" ng-required="true">
@@ -69,7 +69,7 @@ and open the template in the editor.
                                 </div>
                                 <div class="form-group">
                                     <label for="csenha_id">Conforma senha</label>
-                                    <input type="password" class="form-control" id="csenha_id" placeholder="Confirmar senha" ng-model="usuario.csenha">
+                                    <input type="password" class="form-control" id="csenha_id" placeholder="Confirmar senha" >
                                 </div>
 
                                 <div class="checkbox">

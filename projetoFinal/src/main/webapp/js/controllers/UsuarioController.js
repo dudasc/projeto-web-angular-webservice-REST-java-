@@ -6,10 +6,19 @@ function UsuarioController($scope, Usuario, $rootScope) {
     };
 
     $scope.gravar = function () {
+        
+        
+  
+        var data = new Date();
+        var dia = data.getDate();
+        var mes = data.getMonth() + 1;
+        var ano = data.getFullYear();
+        var dataHoje = [ano, mes, dia].join('-');
 
-        if ($scope.usuario.dtCadastro) {
-            $scope.usuario.dtCadastro = new Date($scope.usuario.dtCadastro).toISOString();
-        }
+       // if ($scope.usuario.dtCadastro) {
+            $scope.usuario.dtCadastro = dataHoje;
+        //}
+        alert($scope.usuario.dtCadastro);
         /*  if ($scope.usuario.id) {
          $scope.usuario.update().then(function () {
          $scope.mensagemOk = "Contato alterado com sucesso";

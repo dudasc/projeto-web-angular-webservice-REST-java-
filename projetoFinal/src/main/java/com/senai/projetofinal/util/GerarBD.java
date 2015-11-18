@@ -9,6 +9,8 @@ import com.senai.projetofinal.dao.ClienteDAO;
 import com.senai.projetofinal.dao.EnderecoDAO;
 import com.senai.projetofinal.model.Cliente;
 import com.senai.projetofinal.model.Endereco;
+import com.senai.projetofinal.rest.ClienteResource;
+import javax.ejb.EJB;
 
 
 import javax.ejb.Stateless;
@@ -21,6 +23,8 @@ import javax.inject.Inject;
  */
 @Stateless
 public class GerarBD {
+    @Inject
+    private ClienteDAO clienteDAO;
 
     /**
      * @param args the command line arguments
@@ -72,8 +76,7 @@ public class GerarBD {
         c.setTelefone("35361154");
         c.setUsuario(null);
         
-       // ClienteResource cr = new ClienteResource();
-       // cr.insertE(e);
+      //  c.listar();
         
         
     }

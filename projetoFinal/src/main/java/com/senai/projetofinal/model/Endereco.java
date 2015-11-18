@@ -56,9 +56,9 @@ public class Endereco {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    //@OneToOne
+      @OneToOne(fetch = FetchType.EAGER)
    // @JoinColumn(name = "id_cliente")
-    //private Cliente cliente;
+    private Cliente cliente;
 
     public Endereco(Long id, String pais, String estado, String cidade, String bairro, String rua, String complemento, Integer numero, String cep, Usuario usuario) {
         this.id = id;
