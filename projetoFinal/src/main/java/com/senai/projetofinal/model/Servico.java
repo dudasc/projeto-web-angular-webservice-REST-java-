@@ -46,9 +46,9 @@ public class Servico {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    /*@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    private Usuario usuario;*/
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Agenda agenda;
@@ -56,12 +56,11 @@ public class Servico {
     public Servico() {
     }
 
-    public Servico(Long id, String nome, Double valor, Categoria categoria, Usuario usuario, Agenda agenda) {
+    public Servico(Long id, String nome, Double valor, Categoria categoria, Agenda agenda) {
         this.id = id;
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
-        this.usuario = usuario;
         this.agenda = agenda;
     }
 
@@ -102,14 +101,6 @@ public class Servico {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
 }

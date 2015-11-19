@@ -5,6 +5,8 @@ function UsuarioController($scope, Usuario, $rootScope) {
         $scope.usuario = {};
     };
 
+
+
     $scope.gravar = function () {
         
         

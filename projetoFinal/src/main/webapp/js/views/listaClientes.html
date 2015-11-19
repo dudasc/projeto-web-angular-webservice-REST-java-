@@ -39,16 +39,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="contato in lista| filter:criterioDeBusca">
+            <tr ng-repeat="cliente in listaClientes| filter:criterioDeBusca">
                 <td>{{cliente.id}}</td>
-                <td>{{contato.nome}}</td>
-                <td>{{contato.email}}</td>
-                <td>{{contato.dataNascimento}}</td>
-                <td>{{contato.endereco}}</td>
-                <td>{{contato.ativo}}</td>
-                <td><button class="btn btn-success btn-xs" ng-click="ativar(contato)">Ativar/desativar</button></td>
-                <td><button class="btn btn-info btn-xs" ng-click="editar(contato)">Editar</button></td>
-                <td><button class="btn btn-danger btn-xs" ng-click="deletar(contato)">Excluir</button></td>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.email}}</td>
+                <td>{{cliente.dtNascimento}}</td>
+                <td>{{cliente.endereco.cidade}}</td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
             </tr>
         </tbody>
 

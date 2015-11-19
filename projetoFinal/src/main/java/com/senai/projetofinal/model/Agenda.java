@@ -56,19 +56,19 @@ public class Agenda {
     private List<Servico> listaServicos = new ArrayList<>();
     @Column(name = "valorTotal")
     private Double valorTotal;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    /* @ManyToOne(fetch = FetchType.EAGER)
+     @JoinColumn(name = "id_usuario")
+     private Usuario usuario;*/
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    public Agenda(Long id, Date dataCadastro, Date horario, Double valorTotal, Usuario usuario, Cliente cliente) {
+    public Agenda(Long id, Date dataCadastro, Date horario, Double valorTotal, Cliente cliente) {
         this.id = id;
         this.dataCadastro = dataCadastro;
         this.horario = horario;
         this.valorTotal = valorTotal;
-        this.usuario = usuario;
+
         this.cliente = cliente;
     }
 
@@ -120,14 +120,6 @@ public class Agenda {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Cliente getCliente() {

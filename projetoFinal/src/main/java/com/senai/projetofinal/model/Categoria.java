@@ -39,9 +39,9 @@ public class Categoria {
     private Long id;
     @Column(name = "nome", unique = true, nullable = true, length = 100)
     private String nome;
-    @ManyToOne(fetch = FetchType.EAGER)
+   /* @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    private Usuario usuario;*/
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 
@@ -50,10 +50,9 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(Long id, String nome, Usuario usuario) {
+    public Categoria(Long id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.usuario = usuario;
     }
 
     public List<Servico> getListServicos() {
@@ -62,14 +61,6 @@ public class Categoria {
 
     public void setListServicos(List<Servico> listServicos) {
         this.listServicos = listServicos;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Long getId() {
