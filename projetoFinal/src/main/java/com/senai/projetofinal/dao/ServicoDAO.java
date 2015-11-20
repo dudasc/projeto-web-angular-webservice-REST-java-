@@ -36,8 +36,8 @@ public class ServicoDAO {
         return em.find(Servico.class, id);
     }
 
-    public void atualizar(Servico servico) {
-        em.merge(servico);
+    public Servico atualizar(Servico servico) {
+       return em.merge(servico);
     }
 
     public List<Servico> listar() {
