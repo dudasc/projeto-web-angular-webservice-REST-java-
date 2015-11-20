@@ -17,6 +17,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -33,26 +34,34 @@ import javax.ws.rs.core.Response;
 @Path("clientes")
 @Produces(MediaType.APPLICATION_JSON)
 public class ClienteResource {
-    
+
     @Inject
     private ClienteDAO clienteDAO;
-    
-     @Inject
+
+    @Inject
     private EnderecoDAO enderecoDAO;
-    
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insert(CadastroCliente cadastro){   
-        enderecoDAO.inserir(cadastro.getEndereco());
-        clienteDAO.inserir(cadastro.getCliente());
+    public void insert(CadastroCliente cadastro) {
+        System.out.println(cadastro.getCliente().getNome());
+        System.out.println(cadastro.getEndereco().getRua());
+        enderecoDAO.inserir(cadastro);
+        clienteDAO.inserir(cadastro);
     }
-    
+
     @GET
     public List<Cliente> list() {
         return clienteDAO.listar();
     }
-    
-    
+
+    @DELETE
+    @Path("{id}")
+    public void delete(@PathParam("id") Long id) {
+        System.out.println("okkkkkkkkkk"+id);
+        clienteDAO.excluir(id);
+    }
+
     @GET
     @Path("{id}")
     public Response buscar(@PathParam("id") Long id) {
@@ -62,21 +71,4 @@ public class ClienteResource {
         }
         return Response.ok(cliente).build();
     }
-    
-    /*@POST
-    @Path(value= "/autenticar")
-    @Consumes(value = "application/json")
-    public Usuario autenticar(Usuario usuario) throws LoginInvalidoException {
-        usuario = dao.login(usuario.getLogin(), usuario.getSenha());
-        boolean usuarioValido = usuario != null;
-
-        if (usuarioValido) {
-            
-          return usuario;  
-          
-        } 
-        return null;
-          
-    }*/
-    
 }

@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 /**
  *
@@ -44,18 +45,15 @@ public class Cliente extends Pessoa {
     @Column(name = "dtCadastro", nullable = true)
     private Date dtCadastro;
 
-    /*@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;*/
-
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @CascadeOnDelete
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
     public Cliente() {
     }
 
-    public Cliente(String sexo, String cpf, String celular, String telefone, Date dtNascimento, Date dtCadastro, Endereco endereco, Integer id, String nome, String email) {
+    public Cliente(String sexo, String cpf, String celular, String telefone, Date dtNascimento, Date dtCadastro, Integer id, String nome, String email) {
         super(id, nome, email);
         this.sexo = sexo;
         this.cpf = cpf;
@@ -63,11 +61,9 @@ public class Cliente extends Pessoa {
         this.telefone = telefone;
         this.dtNascimento = dtNascimento;
         this.dtCadastro = dtCadastro;
-      
-        this.endereco = endereco;
-    }
 
-   
+        //this.endereco = endereco;
+    }
 
     public String getSexo() {
         return sexo;
@@ -115,14 +111,6 @@ public class Cliente extends Pessoa {
 
     public void setDtCadastro(Date dtCadastro) {
         this.dtCadastro = dtCadastro;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
 }

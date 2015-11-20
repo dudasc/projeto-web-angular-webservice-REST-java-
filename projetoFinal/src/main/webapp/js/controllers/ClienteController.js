@@ -5,7 +5,6 @@ function ClienteController($scope, Cliente) {
         $scope.cliente = {};
     };
 
-
     $scope.listar = function () {
         Cliente.query().then(function (data) {
             $scope.listaClientes = data;
@@ -14,11 +13,12 @@ function ClienteController($scope, Cliente) {
             alert(error.data);
         });
     };
+
     $scope.gravar = function () {
 
-        // if ($scope.cliente.dtCadastro) {
-        //     $scope.cliente.dtCadastro = new Date($scope.cliente.dtCadastro).toISOString();
-        //  }
+        if ($scope.cliente.dtCadastro) {
+            $scope.cliente.dtCadastro = new Date($scope.cliente.dtCadastro).toISOString();
+        }
         if ($scope.cliente.id) {
             $scope.cliente.update().then(function () {
                 $scope.msgOk = "Contato alterado com sucesso";
@@ -42,11 +42,33 @@ function ClienteController($scope, Cliente) {
                     });
         }
     };
+
+    $scope.editar = function (cliente) {
+        $scope.cliente = angular.copy(cliente);
+    };
+
+    $scope.deletar = function (cliente, confirmation) {
+
+        confirmation = (typeof confirmation !== 'undefined') ? confirmation : true;
+        if (confirmDelete(confirmation)) {
+            cliente.remove().then(function () {
+                $scope.mensagemOk = "Contato Excluído com sucesso";
+                $scope.listar();
+            }, function (error) {
+                $scope.mensagemErro = "Erro ao excluir contato";
+                console.log('error', error);
+                alert(error.data);
+            });
+        }
+    };
+
+    var confirmDelete = function (confirmation) {
+        return confirmation ? confirm('Deseja excluir o contato?') : true;
+    };
+
+
     $scope.limpar();
     $scope.listar();
-
-
-
 }
 
 function HomeRoute($stateProvider) {
