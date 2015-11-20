@@ -5,7 +5,6 @@
  */
 package com.senai.projetofinal.dao;
 
-import com.senai.projetofinal.model.CadastroCliente;
 import com.senai.projetofinal.model.Endereco;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -23,9 +22,9 @@ public class EnderecoDAO {
     @PersistenceContext(unitName = "projetofinalPU")
     private EntityManager em;
 
-    public void inserir(CadastroCliente cliente) {
-        //System.out.println(endereco.getBairro());
-        em.persist(cliente.getEndereco());
+    public void inserir(Endereco endereco) {
+        System.out.println(endereco.getBairro());
+        em.persist(endereco);
     }
 
     public void excluir(Long id) {

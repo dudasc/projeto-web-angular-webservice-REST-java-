@@ -5,7 +5,6 @@
  */
 package com.senai.projetofinal.dao;
 
-import com.senai.projetofinal.model.CadastroCliente;
 import com.senai.projetofinal.model.Cliente;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -24,9 +23,9 @@ public class ClienteDAO {
     @PersistenceContext(unitName = "projetofinalPU")
     private EntityManager em;
 
-    public void inserir(CadastroCliente cliente) {
-        //System.out.println(cliente.getNome());
-        em.persist(cliente.getCliente());
+    public void inserir(Cliente cliente) {
+        System.out.println(cliente.getNome());
+        em.persist(cliente);
     }
 
     public void excluir(Long id) {

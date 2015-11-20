@@ -44,10 +44,10 @@ public class ClienteResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void insert(CadastroCliente cadastro) {
-        System.out.println(cadastro.getCliente().getNome());
-        System.out.println(cadastro.getEndereco().getRua());
-        enderecoDAO.inserir(cadastro);
-        clienteDAO.inserir(cadastro);
+       // System.out.println(cadastro.getCliente().getNome());
+        //System.out.println(cadastro.getEndereco().getRua());
+        enderecoDAO.inserir(cadastro.getEndereco());
+        clienteDAO.inserir(cadastro.getCliente());
     }
 
     @GET
