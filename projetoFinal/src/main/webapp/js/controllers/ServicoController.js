@@ -6,7 +6,16 @@ function ServicoController($scope, Servico,Categoria) {
         $scope.servico = {};
     };
     
-    //$scope.listaCategorias = Categoria.listar();   
+   // $scope.listaCategorias = Categoria.listar(); 
+    
+    $scope.listaCategorias = function () {
+        Categoria.query().then(function (data) {
+            $scope.listaCategorias = data;
+        }, function (error) {
+            console.log('error', error);
+            alert(error.data);
+        });
+    };
             
     $scope.listar = function () {
         Servico.query().then(function (data) {

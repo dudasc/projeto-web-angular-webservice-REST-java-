@@ -31,9 +31,8 @@
             <label for="categoria">Categoria</label>
             <div class="row">
                 <div class="col-md-6">
-                    <select ng-model="listaCategorias" class="form-control" ng-model="servico.categoria.id" name="categoria" id="categoria_id">
-                        <option ng-repeat="item in listaCategorias" value="{{item.id}}">{{item.nome}}</option>
-
+                    <select  class="form-control" ng-model="servico.categoria" ng-options="servico.categoria for categoria in listaCategorias">
+                        <option value="">{{servico.categoria.nome}}</option>
                     </select>
                 </div>
             </div>
