@@ -1,0 +1,27 @@
+<div class="page-header">
+    <h1>Serviços</h1>
+</div>
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">Menu de opções</div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/cadastroServico">Cadastrar novo serviço</a></li>
+                <li><a href="#/cadastroCategoria">Cadastrar nova categoria</a></li>
+                <li><a href="#/listaServicos">Consultar serviços</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-9" ng-controller="ServicoController" >
+    <h2>Cadastrar categoria</h2>
+    <form method="post" name="categoriaForm">
+
+        <div class="form-group">
+            <label for="nome_id">Nome da categoria</label>
+            <input type="text"  class="form-control" name="nome"/>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="gravar()">Gravar</button>
+    </form>
+</div>
