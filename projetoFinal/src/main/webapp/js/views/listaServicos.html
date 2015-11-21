@@ -33,20 +33,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="servico in listaServicos | filter:criterioDeBusca">
+            <tr ng-repeat="servico in listaServicos| filter:criterioDeBusca">
                 <td>{{servico.id}}</td>
                 <td>{{servico.categoria}}</td>
                 <td>{{servico.nome}}</td>
-                <td>{{cliente.dtNascimento}}</td>
-                <td>{{cliente.endereco.cidade}}</td>
-              
-               
-
+                <td>{{servico.preco}}</td>   
                 <td><button class="btn btn-info btn-xs" ng-click="editar(cliente)">Editar</button></td>
-                  <td><button class="btn btn-danger btn-xs" ng-click="deletar(cliente)">Excluir</button></td>
+                <td><button class="btn btn-danger btn-xs" ng-click="deletar(cliente)">Excluir</button></td>
             </tr>
         </tbody>
-
     </table>
-
 </div>

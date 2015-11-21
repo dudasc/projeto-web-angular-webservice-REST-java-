@@ -14,12 +14,12 @@
     </div>
 </div>
 
-<div class="col-md-9" ng-controller="ServicoController" >
+<div class="col-md-9" ng-controller="CategoriaController" >
     <h2>Cadastrar categoria</h2>
     <form method="post" name="categoriaForm">
 
         <div class="form-group">
-            <label for="nome_id">Nome da categoria</label>
+            <label for="nome_id" ng-model="categoria.nome">Nome da categoria</label>
             <div class="row">
                 <div class="col-md-6">
                     <input type="text"  class="form-control" name="nome"/>
