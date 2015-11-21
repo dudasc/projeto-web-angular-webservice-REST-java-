@@ -51,9 +51,11 @@ public class Agenda {
 
     @Column(name = "status")
     private Integer status = 0;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "agenda", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "id_servico")
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "agenda", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    
     private List<Servico> listaServicos = new ArrayList<>();
+    
     @Column(name = "valorTotal")
     private Double valorTotal;
     /* @ManyToOne(fetch = FetchType.EAGER)
@@ -106,14 +108,7 @@ public class Agenda {
         this.status = status;
     }
 
-    public List<Servico> getListaServicos() {
-        return listaServicos;
-    }
-
-    public void setListaServicos(List<Servico> listaServicos) {
-        this.listaServicos = listaServicos;
-    }
-
+   
     public Double getValorTotal() {
         return valorTotal;
     }

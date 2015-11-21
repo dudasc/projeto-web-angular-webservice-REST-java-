@@ -5,7 +5,9 @@
  */
 package com.senai.projetofinal.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,7 +52,8 @@ public class Servico {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;*/
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "id_agenda")
     private Agenda agenda;
 
     public Servico() {
@@ -61,16 +64,9 @@ public class Servico {
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
-        this.agenda = agenda;
+        
     }
 
-    public Agenda getAgenda() {
-        return agenda;
-    }
-
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
-    }
 
     public Long getId() {
         return id;

@@ -1,6 +1,6 @@
 'use restrict'
 
-function CategoriaController($scope) {
+function CategoriaController($scope, Categoria) {
     
     $scope.limpar = function () {
         $scope.categoria = {};
@@ -26,7 +26,7 @@ function CategoriaController($scope) {
                 });
     };
     
-    limpar();
-    listar();
+    $scope.limpar();
+    $scope.listar();
 }
 app.controller('CategoriaController', CategoriaController);
