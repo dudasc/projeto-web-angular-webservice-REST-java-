@@ -41,7 +41,7 @@ public class ServicoDAO {
     }
 
     public List<Servico> listar() {
-        TypedQuery<Servico> q = em.createQuery("SELECT s FROM Servico s ORDER BY nome ", Servico.class);
+        TypedQuery<Servico> q = em.createQuery("SELECT s FROM Servico s", Servico.class);
         return q.getResultList();
     }
 

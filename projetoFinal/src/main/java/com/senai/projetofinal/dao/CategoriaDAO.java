@@ -35,12 +35,12 @@ public class CategoriaDAO {
         return em.find(Categoria.class, id);
     }
 
-    public void atualizar(Categoria categoria) {
-        em.merge(categoria);
+    public Categoria atualizar(Categoria categoria) {
+       return em.merge(categoria);
     }
 
     public List<Categoria> listar() {
-        TypedQuery<Categoria> q = em.createQuery("SELECT ct FROM Categoria ct ORDER BY nome ", Categoria.class);
+        TypedQuery<Categoria> q = em.createQuery("SELECT ct FROM Categoria ct ", Categoria.class);
         return q.getResultList();
     }
 

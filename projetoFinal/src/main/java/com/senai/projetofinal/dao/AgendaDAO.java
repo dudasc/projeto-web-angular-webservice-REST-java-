@@ -34,12 +34,12 @@ public class AgendaDAO {
         return em.find(Agenda.class, id);
     }
 
-    public void atualizar(Agenda agenda) {
-        em.merge(agenda);
+    public Agenda atualizar(Agenda agenda) {
+        return em.merge(agenda);
     }
 
     public List<Agenda> listar() {
-        TypedQuery<Agenda> q = em.createQuery("SELECT ag FROM Agenda ag ORDER BY nome ", Agenda.class);
+        TypedQuery<Agenda> q = em.createQuery("SELECT ag FROM Agenda ag ", Agenda.class);
         return q.getResultList();
     }
 
