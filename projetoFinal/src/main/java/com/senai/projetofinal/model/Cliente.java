@@ -44,7 +44,8 @@ public class Cliente extends Pessoa {
     @Temporal(TemporalType.DATE)
     @Column(name = "dtCadastro", nullable = true)
     private Date dtCadastro;
-
+//CacadePersiste ja insere os dados do endereço da Fk
+    
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @CascadeOnDelete
     @JoinColumn(name = "id_endereco")

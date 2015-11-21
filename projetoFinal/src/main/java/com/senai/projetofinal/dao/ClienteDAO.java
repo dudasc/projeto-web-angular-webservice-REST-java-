@@ -28,7 +28,7 @@ public class ClienteDAO {
         em.persist(cliente);
     }
 
-    public void excluir(Long id) {
+    public void excluir(Integer id) {
         em.remove(em.getReference(Cliente.class, id));
     }
 

@@ -43,13 +43,14 @@ public class ClienteResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insert(CadastroCliente cadastro) {
-       // System.out.println(cadastro.getCliente().getNome());
-        //System.out.println(cadastro.getEndereco().getRua());
-        enderecoDAO.inserir(cadastro.getEndereco());
-        clienteDAO.inserir(cadastro.getCliente());
+    //public void insert(CadastroCliente cadastro) {
+        //enderecoDAO.inserir(cadastro.getEndereco());
+      //  clienteDAO.inserir(cadastro.getCliente());
+    //}
+    public void insert(Cliente cliente) {
+        //enderecoDAO.inserir(cadastro.getEndereco());
+        clienteDAO.inserir(cliente);
     }
-
     @GET
     public List<Cliente> list() {
         return clienteDAO.listar();
@@ -57,7 +58,7 @@ public class ClienteResource {
 
     @DELETE
     @Path("{id}")
-    public void delete(@PathParam("id") Long id) {
+    public void delete(@PathParam("id") Integer id) {
         System.out.println("okkkkkkkkkk"+id);
         clienteDAO.excluir(id);
     }

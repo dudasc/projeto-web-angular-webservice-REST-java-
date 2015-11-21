@@ -36,7 +36,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "pais", unique = true, nullable = true, length = 30)
+    @Column(name = "pais", nullable = true, length = 30)
     private String pais;
     @Column(name = "estado", nullable = true, length = 30)
     private String estado;
