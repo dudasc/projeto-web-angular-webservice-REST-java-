@@ -39,7 +39,7 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "nome", unique = true, nullable = true, length = 100)
+    @Column(name = "nome", length = 100)
     private String nome;
     @Column(name = "valor")
     private Double valor;
@@ -52,9 +52,8 @@ public class Servico {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;*/
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "id_agenda")
-    private Agenda agenda;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "servico", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})    
+    private List<Agenda> listaAgenda = new ArrayList<>();
 
     public Servico() {
     }

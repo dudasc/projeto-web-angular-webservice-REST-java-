@@ -1,11 +1,13 @@
 'use restrict'
 
-function ServicoController($scope, Servico) {
-
+function ServicoController($scope, Servico,Categoria) {
+   
     $scope.limpar = function () {
         $scope.servico = {};
     };
-
+    
+    //$scope.listaCategorias = Categoria.listar();   
+            
     $scope.listar = function () {
         Servico.query().then(function (data) {
             $scope.listaServicos = data;
@@ -36,10 +38,26 @@ function ServicoController($scope, Servico) {
                     });
         }
     };
+    $scope.deletar = function (servico, confirmation) {
 
+        confirmation = (typeof confirmation !== 'undefined') ? confirmation : true;
+        if (confirmDelete(confirmation)) {
+            servico.remove().then(function () {
+                $scope.msgOk = "Excluído com sucesso";
+                $scope.listar();
+            }, function (error) {
+                $scope.msgErro = "Erro ao excluir contato";
+                console.log('error', error);
+                alert(error.data);
+            });
+        }
+    };
+
+    var confirmDelete = function (confirmation) {
+        return confirmation ? confirm('Deseja excluir?') : true;
+    };
     $scope.limpar();
     $scope.listar();
-
 }
 
 function ServicoRoute($stateProvider) {
@@ -49,13 +67,11 @@ function ServicoRoute($stateProvider) {
                 templateUrl: 'js/views/listaServicos.html',
                 //controller: 'ServicoController'
             });
-
     $stateProvider.state('cadastroCategoria', {
         url: '/cadastroCategoria',
         templateUrl: 'js/views/cadastroCategoria.html',
         //controller: 'ServicoController'
     });
-
     $stateProvider.state('cadastroServico', {
         url: '/cadastroServico',
         templateUrl: 'js/views/cadastroServico.html',

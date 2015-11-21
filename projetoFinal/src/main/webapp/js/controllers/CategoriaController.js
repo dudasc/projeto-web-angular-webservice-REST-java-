@@ -15,11 +15,13 @@ function CategoriaController($scope, Categoria) {
         });
     };
     
-    $scope.gravar = function () {
+    $scope.gravar = function () {       
+        
+        
         new Categoria($scope.categoria).create()
                 .then(function () {
                     $scope.msgOk = "Cadastro realizado com sucesso";
-                    //$scope.limpar();
+                    $scope.limpar();
                 }, function (error) {
                     $scope.msgErro = "Erro ao efetuar cadastro";
                     console.log('error', error);

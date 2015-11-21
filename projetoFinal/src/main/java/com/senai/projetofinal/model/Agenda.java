@@ -52,9 +52,9 @@ public class Agenda {
     @Column(name = "status")
     private Integer status = 0;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "agenda", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    
-    private List<Servico> listaServicos = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "id_servico")
+    private Servico servico;
     
     @Column(name = "valorTotal")
     private Double valorTotal;

@@ -3,11 +3,11 @@
 
 
 app.factory('Categoria',
-        function (railsResourceFactory, API_URL) {           
+        function (railsResourceFactory, API_URL) {
 
             var Categoria = railsResourceFactory({
                 url: API_URL + 'categorias'
             });
-            
+
             return Categoria;
         });

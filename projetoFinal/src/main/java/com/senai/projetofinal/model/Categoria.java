@@ -5,6 +5,7 @@
  */
 package com.senai.projetofinal.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -37,39 +38,26 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "nome", unique = true, nullable = true, length = 100)
+    @Column(name = "nome", length = 100)
     private String nome;
    /* @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;*/
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Servico> listaServicos = new ArrayList<>();
 
-    private List<Servico> listServicos = new ArrayList<>();
+   
 
-    public Categoria() {
-    }
-
-    public Categoria(Long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-
-    public List<Servico> getListServicos() {
-        return listServicos;
-    }
-
-    public void setListServicos(List<Servico> listServicos) {
-        this.listServicos = listServicos;
-    }
 
     public Long getId() {
         return id;
     }
 
-    /*public void setId(Long id) {
-     this.id = id;
-     }*/
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -78,4 +66,16 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public List<Servico> getListaServicos() {
+        return listaServicos;
+    }
+
+    public void setListaServicos(List<Servico> listaServicos) {
+        this.listaServicos = listaServicos;
+    }
+    
+
+    
+
+    
 }

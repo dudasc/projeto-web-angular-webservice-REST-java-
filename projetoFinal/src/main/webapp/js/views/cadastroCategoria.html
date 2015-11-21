@@ -16,13 +16,14 @@
 
 <div class="col-md-9" ng-controller="CategoriaController" >
     <h2>Cadastrar categoria</h2>
+    <div class="alert alert-success" role="alert" ng-show="msgOk" >{{msgOk}}</div>
+    <div class="alert alert-danger" role="alert" ng-show="msgErro" >{{msgErro}}</div>
     <form method="post" name="categoriaForm">
-
         <div class="form-group">
-            <label for="nome_id" ng-model="categoria.nome">Nome da categoria</label>
+            <label for="nome_id" >Nome da categoria</label>
             <div class="row">
                 <div class="col-md-6">
-                    <input type="text"  class="form-control" name="nome"/>
+                    <input type="text" ng-model="categoria.nome"  class="form-control" name="nome"/>
                 </div>
             </div>
         </div>
