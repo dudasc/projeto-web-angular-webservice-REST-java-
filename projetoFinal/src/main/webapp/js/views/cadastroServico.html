@@ -19,20 +19,43 @@
     <form method="post" name="categoriaForm">
         <div class="form-group">
             <label for="codigo_id">Código</label>
-            <input type="text"  class="form-control" name="codigo" id="codigo_id" disabled/>
+            <div class="row">
+                <div class="col-md-2">
+                    <input type="text"  class="form-control" name="codigo" id="codigo_id" disabled/>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="categoria">Categoria</label>
-            <select name="categoria" id="categoria_id"></select>
+            <div class="row">
+                <div class="col-md-6">
+                    <select class="form-control" name="categoria" id="categoria_id">
+                        <option>Selecione...</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="nome_id">Nome</label>
-            <input type="text"  class="form-control" name="nome" id="nome_id"/>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text"  class="form-control" name="nome" id="nome_id"/>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="valor_id">Valor</label>
-            <input type="text"  class="form-control" name="valor" id="valor_id"/>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input type="text" class="form-control" id="exampleInputAmount">
+                        <div class="input-group-addon">.00</div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <button type="reset" class="btn btn-default">Limpar</button>
         <button type="submit" class="btn btn-primary" ng-click="gravar()">Gravar</button>
     </form>
 </div>
