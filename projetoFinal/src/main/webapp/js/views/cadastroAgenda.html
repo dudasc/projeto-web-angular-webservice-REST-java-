@@ -1,0 +1,49 @@
+<div class="page-header">
+    <h1>Agenda</h1>
+</div>
+
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">Menu de opções</div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/listaAgenda">Minha agenda</a></li>
+                <li><a href="#/cadastroAgenda">Marcar agendamento</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-9" ng-controller="AgendaController" >
+    <h2>Cadastrar agenda</h2>
+    <div class="alert alert-success" role="alert" ng-show="msgOk" >{{msgOk}}</div>
+    <div class="alert alert-danger" role="alert" ng-show="msgErro" >{{msgErro}}</div>
+    <form method="post" name="categoriaForm">
+        <div class="form-group">
+            <label for="nome_id" >Buscar cliente</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" ng-model="agenda.cliente"  class="form-control" name="nome"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nome_id" >Data</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="date" ng-model="agenda.data"  class="form-control" name="nome"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nome_id" >Buscar cliente</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" ng-model="agenda.cliente"  class="form-control" name="nome"/>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" ng-click="gravar()">Gravar</button>
+    </form>
+</div>

@@ -40,12 +40,13 @@ public class Categoria {
     private Long id;
     @Column(name = "nome", length = 100)
     private String nome;
+    
+    
    /* @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;*/
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Servico> listaServicos = new ArrayList<>(); 
+   
     
     public Categoria(){}
 
@@ -69,18 +70,5 @@ public class Categoria {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public List<Servico> getListaServicos() {
-        return listaServicos;
-    }
-
-    public void setListaServicos(List<Servico> listaServicos) {
-        this.listaServicos = listaServicos;
-    }
-    
-
-    
-
-    
+    }    
 }

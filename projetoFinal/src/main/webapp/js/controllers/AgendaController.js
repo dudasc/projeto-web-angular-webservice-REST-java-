@@ -71,6 +71,12 @@ function AgendaRoute($stateProvider) {
         templateUrl: 'js/views/listaAgenda.html',
        // controller: 'AgendaController'
     });
+    
+     $stateProvider.state('cadastroAgendaAgenda', {
+        url: '/cadastroAgenda',
+        templateUrl: 'js/views/cadastroAgenda.html',
+       // controller: 'AgendaController'
+    });
 }
 
 app.config(AgendaRoute)

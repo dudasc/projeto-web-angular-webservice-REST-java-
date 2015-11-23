@@ -16,6 +16,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -42,8 +44,8 @@ public class Agenda {
     @Column(name = "id")
     private Long id;
     @Temporal(TemporalType.DATE)
-    @Column(name = "dtCadastro", nullable = true)
-    private Date dataCadastro;
+    @Column(name = "data", nullable = true)
+    private Date data;
     @Temporal(TemporalType.TIME)
     @Column(name = "horario", nullable = true)
 
@@ -51,11 +53,17 @@ public class Agenda {
 
     @Column(name = "status")
     private Integer status = 0;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "id_servico")
-    private Servico servico;
-    
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinTable(
+               name = "agendamentos_servicos", joinColumns = {
+                   @JoinColumn(name = "id_agendamento")
+               }, inverseJoinColumns = {
+                   @JoinColumn(name = "id_servico")
+               }
+    )
+    private List<Servico> listaServico = new ArrayList<>();
+
     @Column(name = "valorTotal")
     private Double valorTotal;
     /* @ManyToOne(fetch = FetchType.EAGER)
@@ -65,12 +73,11 @@ public class Agenda {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    public Agenda(Long id, Date dataCadastro, Date horario, Double valorTotal, Cliente cliente) {
+    public Agenda(Long id, Date data, Date horario, Double valorTotal, Cliente cliente) {
         this.id = id;
-        this.dataCadastro = dataCadastro;
+        this.data = data;
         this.horario = horario;
         this.valorTotal = valorTotal;
-
         this.cliente = cliente;
     }
 
@@ -84,12 +91,12 @@ public class Agenda {
     /*public void setId(Long id) {
      this.id = id;
      }*/
-    public Date getDataCadastro() {
-        return dataCadastro;
+    public Date getData() {
+        return data;
     }
 
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public Date getHorario() {
@@ -108,7 +115,6 @@ public class Agenda {
         this.status = status;
     }
 
-   
     public Double getValorTotal() {
         return valorTotal;
     }

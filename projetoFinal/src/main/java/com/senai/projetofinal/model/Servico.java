@@ -19,10 +19,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 /**
  *
@@ -44,15 +46,18 @@ public class Servico {
     @Column(name = "valor")
     private Double valor;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "id_categoria")
+    //CacadePersiste ja insere os dados do endereço da Fk
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @CascadeOnDelete
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
     /*@ManyToOne(fetch = FetchType.EAGER)
      @JoinColumn(name = "id_usuario")
      private Usuario usuario;*/
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "servico", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Agenda> listaAgenda = new ArrayList<>();
+   
+    //@ManyToMany(mappedBy = "Servico")
+    //private List<Agenda> listaAgenda = new ArrayList<>();
 
     public Servico() {
     }
