@@ -31,10 +31,10 @@ public class Cliente extends Pessoa {
     @Column(name = "cpf", unique = true, nullable = true, length = 11)
     private String cpf;
 
-    @Column(name = "celular", unique = true, nullable = true, length = 11)
+    @Column(name = "celular", nullable = true, length = 11)
     private String celular;
 
-    @Column(name = "telefone", unique = true, nullable = true, length = 11)
+    @Column(name = "telefone", nullable = true, length = 11)
     private String telefone;
 
     @Temporal(TemporalType.DATE)
@@ -43,7 +43,7 @@ public class Cliente extends Pessoa {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "dtCadastro", nullable = true)
-    private Date dtCadastro;
+    private Date dtCadastro = new Date();
 
     //CacadePersiste ja insere os dados do endereço da Fk
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

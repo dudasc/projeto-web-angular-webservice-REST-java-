@@ -35,7 +35,7 @@
         <tbody>
             <tr ng-repeat="servico in listaServicos| filter:criterioDeBusca">
                 <td>{{servico.id}}</td>
-                <td>{{servico.categoria}}</td>
+                <td>{{servico.categoria.nome}}</td>
                 <td>{{servico.nome}}</td>
                 <td>{{servico.preco}}</td>   
                 <td><button class="btn btn-info btn-xs" ng-click="editar(servico)">Editar</button></td>

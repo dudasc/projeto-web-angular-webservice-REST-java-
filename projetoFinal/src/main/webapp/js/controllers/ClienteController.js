@@ -15,7 +15,6 @@ function ClienteController($scope, Cliente) {
     };
 
     $scope.gravar = function () {
- 
         if ($scope.cliente.dtCadastro) {
             $scope.cliente.dtCadastro = new Date($scope.cliente.dtCadastro).toISOString();
         }
@@ -30,20 +29,13 @@ function ClienteController($scope, Cliente) {
                 alert(error.data);
             });
         } else {
-            
-            //
-            /*var dto = {
-                cliente: $scope.cliente,
-                endereco: $scope.cliente.endereco
-            };*/
-            //alert(dto);
             new Cliente($scope.cliente).create()
                     .then(function () {
                         $scope.msgOk = "Cadastro realizado com sucesso";
                         //$scope.limpar();
                     }, function (error) {
-                        
-                        
+
+
                         $scope.msgErro = "Erro ao efetuar cadastro";
 
                         console.log('error', error);
@@ -53,6 +45,7 @@ function ClienteController($scope, Cliente) {
 
     $scope.editar = function (cliente) {
         $scope.cliente = angular.copy(cliente);
+        location.href="#/cadastroCliente";
     };
 
     $scope.deletar = function (cliente, confirmation) {

@@ -47,8 +47,7 @@ public class Servico {
     private Double valor;
 
     //CacadePersiste ja insere os dados do endereço da Fk
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @CascadeOnDelete
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 

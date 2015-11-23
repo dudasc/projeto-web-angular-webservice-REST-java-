@@ -40,6 +40,8 @@ public class Categoria {
     private Long id;
     @Column(name = "nome", length = 100)
     private String nome;
+
+
     
     
    /* @ManyToOne(fetch = FetchType.EAGER)

@@ -6,9 +6,6 @@ function ServicoController($scope, Servico,Categoria) {
         $scope.servico = {};
     };
     
-   // $scope.listaCategorias = Categoria.listar(); 
-   
-    
     //lista as categorias para colocar no menu select
     $scope.listarCategorias = function () {
         Categoria.query().then(function (data) {
