@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author eduardo
  */
-//@WebFilter("/*")
+@WebFilter("/*")
 public class LoginFilter implements javax.servlet.Filter {
 
     @Override

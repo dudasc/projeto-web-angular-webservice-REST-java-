@@ -1,7 +1,7 @@
 'use restrict'
 
-function AgendaController($scope, Agenda) {
-    $scope.limpar = function () {
+function AgendaController($scope) {
+  /*  $scope.limpar = function () {
         $scope.agenda = {};
     };
 
@@ -59,17 +59,17 @@ function AgendaController($scope, Agenda) {
     var confirmDelete = function (confirmation) {
         return confirmation ? confirm('Deseja excluir o agendamento selecionado?') : true;
     };
+*/
 
-
-    $scope.limpar();
-    $scope.listar();
+  //  $scope.limpar();
+    //$scope.listar();
 }
 
 function AgendaRoute($stateProvider) {
     $stateProvider.state('listaAgenda', {
         url: '/listaAgenda',
         templateUrl: 'js/views/listaAgenda.html',
-        controller: 'AgendaController'
+       // controller: 'AgendaController'
     });
 }
 
