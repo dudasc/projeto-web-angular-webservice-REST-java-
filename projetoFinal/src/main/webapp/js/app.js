@@ -26,7 +26,7 @@ var app = angular.module('app', [
             .otherwise('/home');*/
 
     //$urlRouterProvider.when('', '/');
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/listaAgenda');
     RailsResourceProvider.rootWrapping(false);
     railsSerializerProvider.underscore(angular.identity).camelize(angular.identity);
 }).constant('API_URL', 'api/');

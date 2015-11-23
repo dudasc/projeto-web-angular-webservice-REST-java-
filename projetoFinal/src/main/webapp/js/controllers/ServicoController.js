@@ -7,10 +7,12 @@ function ServicoController($scope, Servico,Categoria) {
     };
     
    // $scope.listaCategorias = Categoria.listar(); 
+   
     
-    $scope.listaCategorias = function () {
+    //lista as categorias para colocar no menu select
+    $scope.listarCategorias = function () {
         Categoria.query().then(function (data) {
-            $scope.listaCategorias = data;
+            $scope.listaCategoriasSelect = data;
         }, function (error) {
             console.log('error', error);
             alert(error.data);
@@ -65,6 +67,8 @@ function ServicoController($scope, Servico,Categoria) {
     var confirmDelete = function (confirmation) {
         return confirmation ? confirm('Deseja excluir?') : true;
     };
+    
+    $scope.listarCategorias();
     $scope.limpar();
     $scope.listar();
 }
@@ -74,17 +78,17 @@ function ServicoRoute($stateProvider) {
             'listaServicos', {
                 url: '/listaServicos',
                 templateUrl: 'js/views/listaServicos.html',
-                //controller: 'ServicoController'
+                controller: 'ServicoController'
             });
     $stateProvider.state('cadastroCategoria', {
         url: '/cadastroCategoria',
         templateUrl: 'js/views/cadastroCategoria.html',
-        //controller: 'ServicoController'
+        controller: 'ServicoController'
     });
     $stateProvider.state('cadastroServico', {
         url: '/cadastroServico',
         templateUrl: 'js/views/cadastroServico.html',
-        //controller: 'ServicoController'
+        controller: 'ServicoController'
     });
 }
 

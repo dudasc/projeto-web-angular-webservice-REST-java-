@@ -44,7 +44,7 @@ public class Servico {
     @Column(name = "valor")
     private Double valor;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
@@ -52,20 +52,18 @@ public class Servico {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;*/
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "servico", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "servico")    
     private List<Agenda> listaAgenda = new ArrayList<>();
 
-    public Servico() {
-    }
-
-    public Servico(Long id, String nome, Double valor, Categoria categoria, Agenda agenda) {
+    public Servico(){}
+    public Servico(Long id, String nome, Double valor, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
-        
     }
 
+    
 
     public Long getId() {
         return id;
