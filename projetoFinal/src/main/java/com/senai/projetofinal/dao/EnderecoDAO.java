@@ -23,7 +23,6 @@ public class EnderecoDAO {
     private EntityManager em;
 
     public void inserir(Endereco endereco) {
-        System.out.println(endereco.getBairro());
         em.persist(endereco);
     }
 

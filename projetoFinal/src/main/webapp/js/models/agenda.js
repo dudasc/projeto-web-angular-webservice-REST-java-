@@ -5,9 +5,9 @@
 app.factory('Agenda',
         function (railsResourceFactory, API_URL) {           
 
-            var Servico = railsResourceFactory({
+            var Agenda = railsResourceFactory({
                 url: API_URL + 'agendamentos'
             });
             
-            return Servico;
+            return Agenda;
         });

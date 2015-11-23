@@ -10,7 +10,7 @@
         <div class="panel-heading">Menu de opções</div>
         <div class="panel-body">
             <ul class="nav nav-pills nav-stacked">
-                 <li><a href="#/cadastroCliente">Cadastrar novo cliente</a></li>
+                <li><a href="#/cadastroCliente">Cadastrar novo cliente</a></li>
                 <li><a href="#/listaClientes">Pesquisar clientes</a></li>
             </ul>
         </div>
@@ -20,8 +20,8 @@
 
 <div class="col-md-9" ng-controller="ClienteController" >
     <h2>Clientes cadastrados</h2>
-    <div class="alert alert-success" role="alert" ng-show="mensagemOk" >{{mensagemOk}}</div>
-    <div class="alert alert-danger" role="alert" ng-show="mensagemErro" >{{mensagemErro}}</div>
+    <div class="alert alert-success" role="alert" ng-show="msgOk" >{{msgOk}}</div>
+    <div class="alert alert-danger" role="alert" ng-show="msgErro" >{{msgErro}}</div>
 
     <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?"/><br>
     <table class="table table-bordered table-striped table-hover table-condensed">
@@ -30,10 +30,8 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>E-mail</th>                
-                <th>Nascimento</th>
-                <th>Endereco</th>
-                <th>Ativo</th>
-                <th>Ativar/Desativar</th>
+                <th>CPF</th>
+                <th>Cidade</th>
                 <th>Editar</th>
                 <th>Excluir</th>
             </tr>
@@ -43,15 +41,10 @@
                 <td>{{cliente.id}}</td>
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.email}}</td>
-                <td>{{cliente.dtNascimento}}</td>
+                <td>{{cliente.cpf}}</td>
                 <td>{{cliente.endereco.cidade}}</td>
-               <td></td>
-               <td></td>
-               <td></td>
-               
-
                 <td><button class="btn btn-info btn-xs" ng-click="editar(cliente)">Editar</button></td>
-                  <td><button class="btn btn-danger btn-xs" ng-click="deletar(cliente)">Excluir</button></td>
+                <td><button class="btn btn-danger btn-xs" ng-click="deletar(cliente)">Excluir</button></td>
             </tr>
         </tbody>
 

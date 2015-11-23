@@ -24,7 +24,6 @@ public class ClienteDAO {
     private EntityManager em;
 
     public void inserir(Cliente cliente) {
-        System.out.println(cliente.getNome());
         em.persist(cliente);
     }
 

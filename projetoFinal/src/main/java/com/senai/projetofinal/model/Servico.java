@@ -44,7 +44,7 @@ public class Servico {
     @Column(name = "valor")
     private Double valor;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 

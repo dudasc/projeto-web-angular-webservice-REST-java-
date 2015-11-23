@@ -47,7 +47,7 @@ public class Cliente extends Pessoa {
 //CacadePersiste ja insere os dados do endereço da Fk
     
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @CascadeOnDelete
+    @CascadeOnDelete()
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 

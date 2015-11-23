@@ -44,10 +44,8 @@ public class Categoria {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;*/
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Servico> listaServicos = new ArrayList<>();
-
-   
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
+    private List<Servico> listaServicos = new ArrayList<>();  
 
 
     public Long getId() {

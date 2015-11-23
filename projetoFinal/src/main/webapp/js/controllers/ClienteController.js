@@ -71,7 +71,7 @@ function ClienteController($scope, Cliente) {
     };
 
     var confirmDelete = function (confirmation) {
-        return confirmation ? confirm('Deseja excluir o contato?') : true;
+        return confirmation ? confirm('Deseja excluir o cliente selecionado?') : true;
     };
 
 
